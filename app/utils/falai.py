@@ -139,7 +139,7 @@ Make the prompt better"""
 
         image_buf = io.BytesIO(base64.b64decode(falai_res[0]["url"].replace("data:image/jpeg;base64,", "")))
         
-        newmessage = await answer_message.answer_photo(falai_res[0]["url"], caption=response_text, parse_mode="Markdown")
+        newmessage = await answer_message.answer_photo(image_buf, caption=response_text, parse_mode="Markdown")
         await answer_message.delete()
         #await answer_message.
         #await bot.send_photo(chat_id=chat_id, photo=falai_res[0])
