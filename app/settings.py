@@ -26,4 +26,4 @@ class Settings(BaseSettings):
 
     FAL_AI_API_KEY: SecretStr = SecretStr(getenv('FAL_AI_API_KEY'))
 
-SETTINGS = Settings(_env_file=".env", _env_file_encoding="utf-8")
+SETTINGS = Settings()
