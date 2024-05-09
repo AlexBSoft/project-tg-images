@@ -114,7 +114,7 @@ Make the prompt better"""
         await answer_message.edit_text(response_text)
         # Отправляем response_text в генератор изображений
         result = await httpx_client_no_proxy.post(
-            url=f"https://fal.run/fal-ai/lcm",
+            url=f"https://fal.run/fal-ai/fast-lcm-diffusion",
             headers={"Content-Type": "application/json", "Authorization": f"Key {SETTINGS.FAL_AI_API_KEY.get_secret_value().strip()}"},
             json={
                 "model": "sdv1-5",
