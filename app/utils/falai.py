@@ -6,6 +6,8 @@ import traceback
 import logging
 import asyncio
 import fal
+import base64
+import io
 
 from datetime import datetime
 from aiogram.types import Message
@@ -132,6 +134,10 @@ Make the prompt better"""
         )
         falai_res = result.json()['images']
         print("falai result: ", falai_res)
+        
+        # falai_res[0]["url"] is base64 encoded image string
+
+        image_buf = io.BytesIO(base64.b64decode(falai_res[0]["url"].replace("data:image/jpeg;base64,", "")))
         
         newmessage = await answer_message.answer_photo(falai_res[0]["url"], caption=response_text, parse_mode="Markdown")
         await answer_message.delete()
