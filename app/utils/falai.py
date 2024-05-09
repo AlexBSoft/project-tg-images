@@ -120,7 +120,7 @@ Make the prompt better"""
             url=f"https://fal.run/fal-ai/fast-lcm-diffusion",
             headers={"Content-Type": "application/json", "Authorization": f"Key {SETTINGS.FAL_AI_API_KEY.get_secret_value().strip()}"},
             json={
-                "model": "sdv1-5",
+                "model": "runwayml/stable-diffusion-v1-5",
                 "prompt": response_text, 
                 "negative_prompt": "nsfw, nude, sexual",
                 "enable_safety_checks": True,
