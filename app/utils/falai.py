@@ -8,6 +8,7 @@ import asyncio
 import fal
 import base64
 import io
+from aiogram.types import BufferedInputFile
 
 from datetime import datetime
 from aiogram.types import Message
@@ -138,8 +139,9 @@ Make the prompt better"""
         # falai_res[0]["url"] is base64 encoded image string
 
         image_buf = io.BytesIO(base64.b64decode(falai_res[0]["url"].replace("data:image/jpeg;base64,", "")))
+        image = BufferedInputFile(image_buf, filename="image.jpg")
         
-        newmessage = await answer_message.answer_photo(image_buf, caption=response_text, parse_mode="Markdown")
+        newmessage = await answer_message.answer_photo(photo=image, caption=response_text, parse_mode="Markdown")
         await answer_message.delete()
         #await answer_message.
         #await bot.send_photo(chat_id=chat_id, photo=falai_res[0])
