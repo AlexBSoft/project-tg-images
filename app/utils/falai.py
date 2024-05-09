@@ -123,6 +123,7 @@ Make the prompt better"""
                 "model": "runwayml/stable-diffusion-v1-5",
                 "prompt": response_text, 
                 "negative_prompt": "nsfw, nude, sexual",
+                "image_size": "square",
                 "enable_safety_checks": True,
                 "image_size": {
                     "width": 512,
