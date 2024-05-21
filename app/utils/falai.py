@@ -129,8 +129,8 @@ Make the prompt better"""
                     "width": 512,
                     "height": 512
                 },
-                "lora_scale": 1,
-                "lora_url": loraUrl
+                # "lora_scale": 1,
+                # "lora_url": loraUrl
             },
             timeout=60
         )
