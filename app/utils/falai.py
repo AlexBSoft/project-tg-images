@@ -86,7 +86,6 @@ async def _chat_completion(user_data: UserData, prompt: str, answer_message: Mes
         else:
             prompt = f"""
 Act as stable diffusion prompt generator. Answer only prompts in plain text and carefully follow this instruction.\n
-If Russian word "Таганрог" is found in user input then add tags "Taganrog a city with a harbor" at the start of string. Do not add it if you don't find this word.\n
 Translate all words to english. Only use english. Do not use verbs, write tags.\n
 User input: {prompt}\n
 Add style keywords as: photorealistic, 4k, best quality
@@ -101,6 +100,12 @@ Final prompt:\n"""
         contents.append({"role": "model", "parts":[{"text": response_text}]})
 
         print("Response text: ", response_text)
+
+        # Заменить таганрог
+        response_text = response_text.replace("Taganrog", "Taganrog a city with a harbor")
+        response_text = response_text.replace("taganrog", "Taganrog a city with a harbor")
+        response_text = response_text.replace("Таганрог", "Taganrog a city with a harbor")
+        response_text = response_text.replace("таганрог", "Taganrog a city with a harbor")
 
         loraUrl = ""
 
