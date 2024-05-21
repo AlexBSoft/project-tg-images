@@ -120,17 +120,19 @@ Make the prompt better"""
             url=f"https://fal.run/fal-ai/fast-lcm-diffusion",
             headers={"Content-Type": "application/json", "Authorization": f"Key {SETTINGS.FAL_AI_API_KEY.get_secret_value().strip()}"},
             json={
-                "model": "runwayml/stable-diffusion-v1-5",
+                "model_name": "runwayml/stable-diffusion-v1-5",
                 "prompt": response_text, 
                 "negative_prompt": "nsfw, nude, sexual",
                 "image_size": "square",
-                "enable_safety_checks": True,
-                # "image_size": {
-                #     "width": 512,
-                #     "height": 512
-                # },
-                # "lora_scale": 1,
-                # "lora_url": loraUrl
+                "num_inference_steps": 6,
+                "guidance_scale": 1.5,
+                "sync_mode": True,
+                "num_images": 1,
+                "enable_safety_checker": True,
+                "safety_checker_version": "v1",
+                "format": "jpeg",
+                "lora_scale": 1,
+                "lora_url": loraUrl
             },
             timeout=60
         )
