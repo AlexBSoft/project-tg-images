@@ -125,10 +125,10 @@ Make the prompt better"""
                 "negative_prompt": "nsfw, nude, sexual",
                 "image_size": "square",
                 "enable_safety_checks": True,
-                "image_size": {
-                    "width": 512,
-                    "height": 512
-                },
+                # "image_size": {
+                #     "width": 512,
+                #     "height": 512
+                # },
                 # "lora_scale": 1,
                 # "lora_url": loraUrl
             },
