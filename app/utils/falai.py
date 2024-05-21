@@ -131,8 +131,10 @@ Make the prompt better"""
                 "enable_safety_checker": True,
                 "safety_checker_version": "v1",
                 "format": "jpeg",
-                "lora_scale": 1,
-                "lora_url": loraUrl
+                "LoraWeight": {
+                    "path": loraUrl,
+                    "scale": 1
+                }
             },
             timeout=60
         )
