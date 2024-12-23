@@ -16,10 +16,11 @@ from app.utils.payments import YookassaApi
 
 logger.setup()
 
+
 async def main():
     bot = Bot(SETTINGS.BOT_TOKEN.get_secret_value(), parse_mode="HTML")
     handlers.set_bot(bot)
-    
+
     # Setup yookassa
     YookassaApi.setup(
         SETTINGS.YOOKASSA_ACCOUNT_ID.get_secret_value(),
@@ -28,7 +29,7 @@ async def main():
 
     # Setup database
     MongoDB.setup(
-        SETTINGS.MONGODB_URL.get_secret_value(), 
+        SETTINGS.MONGODB_URL.get_secret_value(),
         SETTINGS.MONGODB_DB.get_secret_value(),
     )
 
@@ -49,18 +50,16 @@ async def main():
 
     # Registering routers
     dp.include_router(main_router)
-    
+
     # Starting polling
     loop = asyncio.get_running_loop()
     loop.create_task(
-        dp.start_polling(
-            bot,
-            allowed_updates=dp.resolve_used_update_types()        
-        ),
+        dp.start_polling(bot, allowed_updates=dp.resolve_used_update_types()),
     )
 
     dp.startup.register(handlers.on_startup)
-    
+
+
 if __name__ == "__main__":
     logging.warning("Starting bot")
     loop = asyncio.new_event_loop()
